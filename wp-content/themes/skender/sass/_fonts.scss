@@ -1,0 +1,15 @@
+/* ========================================
+   Fonts 
+   ======================================== */
+
+@font-face {
+  font-family: 'DIN';
+  src: url('../fonts/DIN-Bold.eot');
+  src: url('../fonts/DIN-Bold.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/DIN-Bold.woff2') format('woff2'),
+      url('../fonts/DIN-Bold.woff') format('woff'),
+      url('../fonts/DIN-Bold.ttf') format('truetype'),
+      url('../fonts/DIN-Bold.svg#DIN-Bold') format('svg');
+  font-weight: bold;
+  font-style: normal;
+}

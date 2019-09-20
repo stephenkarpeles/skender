@@ -1,0 +1,258 @@
+/* ========================================
+   Header 
+   ======================================== */
+
+header {
+  position: relative;
+  padding: 1.25em 0 0;
+  @include mq(desktop, 'max-width') {
+    padding: 1.25em 0;
+    position: static;
+  }
+
+  .logo {
+    position: relative;
+    top: 4px;
+    float: left;
+
+    @include mq(desktop, 'max-width') {
+      top: 0;
+      margin-top: 4px;
+    }
+
+    img {
+      width: 190px;
+    }
+  }
+
+  .social-nav {
+    padding: 0;
+    margin: 3px 0 0;
+    float: right;
+    list-style: none;
+
+    @include mq(desktop, 'max-width') {
+      display: none;
+    }
+
+    .text {
+      display: inline-block;
+      color: $copy-light;
+      font-size: .8em;
+      position: relative;
+      top: -3px;
+      text-transform: uppercase;
+    }
+
+    ul {
+      position: relative;;
+      display: inline-block;
+      margin-left: .5em;
+    }
+
+    li {
+      position: relative;
+      margin-left: .5em;
+      display: inline-block;    
+
+      &:nth-child(1),
+      &:nth-child(2),
+      &:nth-child(3) {
+        top: -1px;
+      }
+
+      &:nth-child(5) {
+        top: -2px;
+        padding-right: 1em;
+
+        &:after {
+          position: absolute;
+          content: '';
+          top: -5px;
+          right: 0;
+          height: 20px;
+          width: 1px;
+          background: lighten($copy-light, 20%);
+        }
+      }
+    }
+  }
+  
+  .menu-main-navigation-container {
+    overflow: hidden;
+  }
+
+  .nav-toggle {
+    float: right;
+    padding: 19px 0 20px 20px;
+    cursor: pointer;
+    position: relative;
+    z-index: 9999;
+    @include mq(desktop) {
+      display: none;
+    }
+
+    &.has-open-nav {
+      position: fixed;
+      right: 7%;
+    }
+    
+    span {
+      position: relative;
+      z-index: 9999;
+      width: 30px;
+      height: 4px;
+      background: $copy-dark;
+      display: block;
+      transition: all .15s ease;
+      opacity: 1;
+
+      &:nth-child(2) {
+        top: 4px;
+      }
+
+      &:nth-child(3) {
+        top: 8px;
+      }
+    }
+
+    &.has-open-nav span {
+      transform: rotate(45deg);
+      top: 8px;
+      background: $primary;
+
+      &:nth-child(2) {
+        opacity: 0;
+      }
+
+      &:nth-child(3) {
+        transform: rotate(-45deg);
+        top: 0;
+      }      
+    }
+  }
+
+  .main-nav {
+    padding: 0;
+    margin: 0;
+    float: right;
+    clear: both;
+    margin-top: -8px;
+
+    #primary-menu {
+      @include mq(desktop, 'max-width') {
+        position: fixed;
+        background: white;
+        right: -100%;
+        transition: right ease .15s;
+        width: 0;
+        height: 100%;
+        z-index: 8000;
+        box-shadow: -1px 0 4px rgba(0, 0, 0, .25);
+        top: 0;
+        padding: 90px 7% 0 0;
+
+        &.is-visible {
+          right: 0;
+          width: 220px;
+          padding: 90px 7% 0 0;
+
+          .admin-bar & {
+            padding: 130px 7% 0 0;
+          }
+        }
+      }
+    }
+
+    li {
+      display: inline-block;
+      list-style-type: none;
+      margin-left: 1.5em;
+      padding: 0 0 1.25em;
+
+      @include mq(desktop, 'max-width') {
+        margin-left: 1em;
+        display: block;
+        text-align: right;
+      }
+
+      ul {
+        text-align: center;
+        margin-top: 20px;
+        margin-left: 0;
+        left: 0;
+        right: 0;
+        position: absolute;
+        z-index: -999;
+        opacity: 0;
+        width: 100%;
+        background: $primary;
+        transition: all .1s ease;
+
+        @include mq(desktop, 'max-width') {
+          display: none;
+        }
+
+        li {
+          padding: 1.55em 0;
+        }
+
+        &:hover {
+          opacity: 1;
+          z-index: 999;
+        }
+
+        a {
+          color: white;
+          text-transform: uppercase;
+
+          &:hover {
+            opacity: .85;
+          }
+        }
+      }     
+    }
+
+    a {
+      font-size: .9em;      
+      text-transform: uppercase;
+      color: $copy-dark;
+      padding: 0 0 1.65em;
+      position: relative;
+      transition: color .1s ease;
+
+      @include mq(desktop, 'max-width') {
+        &:hover {
+          color: $primary;
+        }
+      }
+
+      /*
+      &:hover:after,
+      &.active:after {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 0; 
+        height: 0; 
+        margin-top: 10px;
+        left: calc(50% - 15px);
+        border-left: 15px solid transparent;
+        border-right: 15px solid transparent;
+        border-bottom: 15px solid $primary;
+        transition: all .1s ease;
+
+        @include mq(desktop, 'max-width') {
+          display: none;
+        }
+
+      }
+      */
+
+      &:hover + ul {
+        opacity: 1;
+        z-index: 999;
+      }
+    }
+  }
+}
